@@ -1,6 +1,8 @@
 import MediaPlayer from "./components/MediaPlayer";
 import CourseCard from "./components/CourseCard";
 import QuizCard from "./components/QuizCard";
+import { courses } from "./data/courses";
+import { quizzes } from "./data/quizzes";
 
 export default function Home() {
   return (
@@ -21,31 +23,29 @@ export default function Home() {
       {/* Courses section */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Courses</h2>
-        <div className="grid md:grid-cols-3 gap-4">
-          <CourseCard
-            id="matematika"
-            title="Matematika Dasar"
-            description="Pelajari konsep dasar matematika untuk SMP."
-          />
-          <CourseCard
-            id="bahasa"
-            title="Bahasa Indonesia"
-            description="Tingkatkan kemampuan membaca dan menulis."
-          />
-          <CourseCard
-            id="ipa"
-            title="IPA Terpadu"
-            description="Eksplorasi ilmu pengetahuan alam secara menyeluruh."
-          />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {courses.map((c) => (
+            <CourseCard
+              key={c.id}
+              id={c.id}
+              title={c.title}
+              description={c.description}
+            />
+          ))}
         </div>
       </section>
 
       {/* Quiz section */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Quiz</h2>
-        <div className="grid md:grid-cols-2 gap-4">
-          <QuizCard title="Kuis Matematika" href="/quiz/matematika" />
-          <QuizCard title="Kuis Bahasa" href="/quiz/bahasa" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {Object.values(quizzes).map((q) => (
+            <QuizCard
+              key={q.title}
+              title={q.title}
+              href={`/quiz/${q.title.toLowerCase().split(" ")[1]}`}
+            />
+          ))}
         </div>
       </section>
     </div>

@@ -1,6 +1,5 @@
 import { courses } from "../../data/courses";
 import QuizCard from "../../components/QuizCard";
-
 export default function CourseDetail({ params }) {
   const course = courses.find((c) => c.id === params.id);
   return (

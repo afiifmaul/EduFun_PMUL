@@ -19,8 +19,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col text-gray-800`}
       >
-        <Header /> {/* <-- render client header */}
-        {/* tambah pt-24 agar konten tidak tertutup header */}
+        <Header />
         <main className="p-6 pt-24 flex-1 max-w-7xl mx-auto">{children}</main>
         <footer className="text-center text-sm text-gray-500 p-4 border-t">
           © 2025 EduFun
