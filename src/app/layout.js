@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header"; // <-- baru
+import Header from "./components/Header";
+import Chatbot from "./components/Chatbot"; // Tambahkan ini
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -21,6 +22,10 @@ export default function RootLayout({ children }) {
       >
         <Header />
         <main className="p-6 pt-24 flex-1 max-w-7xl mx-auto">{children}</main>
+
+        {/* Chatbot muncul di seluruh halaman */}
+        <Chatbot />
+
         <footer className="text-center text-sm text-gray-500 p-4 border-t">
           © 2025 EduFun
         </footer>

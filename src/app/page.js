@@ -3,6 +3,7 @@ import CourseCard from "./components/CourseCard";
 import QuizCard from "./components/QuizCard";
 import { courses } from "./data/courses";
 import { quizzes } from "./data/quizzes";
+import Chatbot from "./components/Chatbot"; // Tambahkan ini
 
 export default function Home() {
   return (
@@ -16,8 +17,7 @@ export default function Home() {
             video, audio, kuis, dan lainnya untuk mendukung proses belajar.
           </p>
         </div>
-        <MediaPlayer src="/media/hua.mp4" type="video" />{" "}
-        {/* src="/media/nama_file.mp4" ini bisa diganti sesuai kebutuhan */}
+        <MediaPlayer src="/media/hua.mp4" type="video" />
       </section>
 
       {/* Courses section */}
@@ -48,6 +48,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Chatbot muncul di semua halaman */}
+      <Chatbot />
     </div>
   );
 }
