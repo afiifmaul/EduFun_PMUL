@@ -12,6 +12,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "EduFun",
   description: "Website edukasi multimedia",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -26,7 +29,7 @@ export default function RootLayout({ children }) {
         {/* Chatbot muncul di seluruh halaman */}
         <Chatbot />
 
-        <footer className="text-center text-sm text-gray-500 p-4 border-t">
+        <footer className="bg-gray-200 text-black p-4 text-center">
           © 2025 EduFun
         </footer>
       </body>
