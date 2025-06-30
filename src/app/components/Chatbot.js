@@ -63,7 +63,7 @@ export default function Chatbot() {
             />
             <button
               onClick={handleSend}
-              className="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700"
+              className="bg-amber-400 text-black px-3 py-1 rounded-md hover:bg-amber-500"
             >
               Kirim
             </button>
@@ -72,7 +72,7 @@ export default function Chatbot() {
       ) : (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700"
+          className="bg-amber-400 text-white rounded-full p-4 shadow-lg hover:bg-amber-500"
         >
           💬
         </button>
