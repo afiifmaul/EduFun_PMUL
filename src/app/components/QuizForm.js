@@ -22,6 +22,7 @@ export default function QuizForm({ questions }) {
     setShuffled(shuffleArray(questions));
   }, [questions]);
 
+  const totalMCQ = shuffled.filter((q) => q.type === "mcq").length;
   const total = shuffled.length;
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -35,15 +36,15 @@ export default function QuizForm({ questions }) {
   };
 
   const handleSubmit = () => {
-    let correct = 0,
-      totalMCQ = 0;
+    let correct = 0;
     shuffled.forEach((item) => {
       if (item.type === "mcq") {
-        totalMCQ++;
         if (answers[item.id] === item.answer) correct++;
       }
     });
-    setScore({ correct, total: totalMCQ });
+    const wrong = totalMCQ - correct;
+    const percent = Math.round((correct / totalMCQ) * 100);
+    setScore({ correct, wrong, totalMCQ, percent });
   };
 
   if (score) {
@@ -58,10 +59,16 @@ export default function QuizForm({ questions }) {
         <div className="bg-white rounded shadow p-8 text-center max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">Hasil Quiz</h2>
           <p className="text-xl">
-            Kamu menjawab benar{" "}
-            <span className="font-semibold">{score.correct}</span> dari{" "}
-            <span className="font-semibold">{score.total}</span> soal pilihan
-            ganda.
+            Benar: <span className="font-semibold">{score.correct}</span>
+          </p>
+          <p className="text-xl">
+            Salah: <span className="font-semibold">{score.wrong}</span>
+          </p>
+          <p className="text-xl">
+            Total MCQ: <span className="font-semibold">{score.totalMCQ}</span>
+          </p>
+          <p className="text-xl">
+            Nilai: <span className="font-semibold">{score.percent}</span>
           </p>
           <button
             onClick={() => {
@@ -164,11 +171,12 @@ export default function QuizForm({ questions }) {
               className={`w-8 h-8 flex items-center justify-center border rounded text-xs
                 ${
                   current === idx
-                    ? "bg-amber-400 text-white"
+                    ? "bg-amber-400 text-black"
                     : answers[item.id]
-                    ? "bg-amber-500"
+                    ? "bg-amber-500 text-black"
                     : "bg-white"
-                }`}
+                }
+              `}
             >
               {idx + 1}
             </button>
