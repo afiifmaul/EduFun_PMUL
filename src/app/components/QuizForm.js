@@ -56,16 +56,16 @@ export default function QuizForm({ questions }) {
         >
           Kembali
         </button>
-        <div className="bg-white rounded shadow p-8 text-center max-w-4xl mx-auto">
+        <div className="bg-white rounded shadow p-8 text-center w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">Hasil Quiz</h2>
+          <p className="text-xl">
+            Total Pilihan Ganda: <span className="font-semibold">{score.totalMCQ}</span>
+          </p>
           <p className="text-xl">
             Benar: <span className="font-semibold">{score.correct}</span>
           </p>
           <p className="text-xl">
             Salah: <span className="font-semibold">{score.wrong}</span>
-          </p>
-          <p className="text-xl">
-            Total MCQ: <span className="font-semibold">{score.totalMCQ}</span>
           </p>
           <p className="text-xl">
             Nilai: <span className="font-semibold">{score.percent}</span>
